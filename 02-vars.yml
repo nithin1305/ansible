@@ -45,4 +45,4 @@
       register: OUT
     - name: print OUT variable
       ansible.builtin.debug:
-        msg: OUT = {{OUT}}
+        msg: OUT = {{OUT.stdout}}
