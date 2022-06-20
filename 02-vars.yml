@@ -29,7 +29,7 @@
 
 - name: Printing the hostname
   hosts: all
-  task:
+  tasks:
     - name: Print Hostname
       ansible.builtin.debug:
         msg: Hostname = {{ansible_hostname}}
