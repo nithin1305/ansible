@@ -6,3 +6,4 @@
     - name: Print URL
       ansible.builtin.debug:
         msg: URL = {{URL}}
+# NOTE: if we declare the variable name on play level then all the tasks can access that variable
