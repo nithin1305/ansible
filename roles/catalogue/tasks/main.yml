@@ -8,7 +8,7 @@
     name:
       - nodejs
       - gcc-c++
-  state: installed
+    state: installed
 
 - name: Add application user
   ansible.builtin.user:
