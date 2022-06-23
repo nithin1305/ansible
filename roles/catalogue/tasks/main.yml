@@ -5,8 +5,9 @@
 
 - name: Install node js
   ansible.builtin.yum:
-    - nodejs
-    - gcc-c++
+    name:
+      - nodejs
+      - gcc-c++
   state: installed
 
 - name: Add application user
