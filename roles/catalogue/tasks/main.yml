@@ -38,7 +38,7 @@
   become_user: roboshop
 
 - name: Setup Catalogue Systemd file
-  ansible.builtin.templates:
+  ansible.builtin.template:
     src: systemd.service
     dest: /etc/systemd/system/catalogue.service
 
