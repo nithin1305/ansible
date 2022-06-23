@@ -13,5 +13,15 @@
     path: /usr/share/nginx/html
     state: absent
 
+- name: Copy roboshop content
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html/
+
+- name: Start nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
 
 
