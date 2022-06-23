@@ -1,3 +1,8 @@
+- name: Install Mongodb
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: installed
+
 - name: mongodb repo file
   ansible.builtin.copy:
     src: mongo.repo
