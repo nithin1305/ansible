@@ -4,10 +4,9 @@
     dest: /etc/yum.repos.d/nodejs.repo
 
 - name: Install node js
-   ansible.builtin.yum:
-     - nodejs
-     - gcc-c++
-   state: installed
+  ansible.builtin.yum:
+    - nodejs
+    - gcc-c++
 
 - name: Add application user
   ansible.builtin.user:
