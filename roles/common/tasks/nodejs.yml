@@ -1,0 +1,50 @@
+- name: setup repofile for Nodejs
+  ansible.builtin.copy:
+    src: nodejs.repo
+    dest: /etc/yum.repos.d/nodejs.repo
+
+- name: Install node js
+  ansible.builtin.yum:
+    name:
+      - nodejs
+      - gcc-c++
+    state: installed
+
+- name: Add application user
+  ansible.builtin.user:
+    name: roboshop
+    state: present
+
+- name: Download app code
+  ansible.builtin.import_role:
+    name: common
+    tasks_from:  download
+
+- name: Clean the old app code
+  ansible.builtin.file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: absent
+
+- name: Copy app code
+  ansible.builtin.copy:
+    src: /tmp/{{COMPONENT}}-main/
+    dest: /home/roboshop/{{COMPONENT}}/
+    remote_src: yes
+  become_user: roboshop
+
+- name: Install {{COMPONENT}} dependencies
+  community.general.npm:
+    path: /home/roboshop/{{COMPONENT}}
+  become_user: roboshop
+
+- name: Setup {{COMPONENT}} Systemd file
+  ansible.builtin.template:
+    src: systemd.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
+
+- name: Start {{COMPONENT}} service
+  ansible.builtin.systemd:
+    name: {{COMPONENT}}
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
