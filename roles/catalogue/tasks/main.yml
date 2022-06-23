@@ -2,6 +2,7 @@
   ansible.builtin.copy:
     src: nodejs.repo
     dest: /etc/yum.repos.d/nodejs.repo
+    
  - name: Install node js
    ansible.builtin.yum:
      - nodejs
