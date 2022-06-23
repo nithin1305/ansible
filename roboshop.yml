@@ -11,7 +11,7 @@
     - mongodb
 
 - name: Setup Catalogue component
-  hosts: Catalogue
+  hosts: CATALOGUE
   become: yes
   roles:
     - catalogue
