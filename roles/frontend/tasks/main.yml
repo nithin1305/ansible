@@ -8,6 +8,7 @@
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
     remote_src: yes
+
 - name: Remove previous content
   ansible.builtin.file:
     path: /usr/share/nginx/html
