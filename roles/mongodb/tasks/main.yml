@@ -1,12 +1,12 @@
-- name: Install Mongodb
-  ansible.builtin.yum:
-    name: mongodb-org
-    state: latest
-
 - name: mongodb repo file
   ansible.builtin.copy:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongodb.repo
+
+- name: Install Mongodb
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: latest
 
 - name: Update MongoDB Listen address
   ansible.builtin.replace:
