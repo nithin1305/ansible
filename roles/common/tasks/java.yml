@@ -1,9 +1,4 @@
-- name: setup repofile for Nodejs
-  ansible.builtin.copy:
-    src: nodejs.repo
-    dest: /etc/yum.repos.d/nodejs.repo
-
-- name: Install node js
+- name: Install Maven
   ansible.builtin.yum:
     name: maven
     state: installed
@@ -22,4 +17,4 @@
 - name: Setup app user and download the app code
   ansible.builtin.import_role:
     name: common
-    tasks_from:  systemd
+    tasks_from: systemd
