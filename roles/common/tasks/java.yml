@@ -5,9 +5,7 @@
 
 - name: Install node js
   ansible.builtin.yum:
-    name:
-      - nodejs
-      - gcc-c++
+    name: maven
     state: installed
 
 - name: Setup app user and download the app code
@@ -16,11 +14,11 @@
     tasks_from:  download
 
 - name: Install {{COMPONENT}} dependencies
-  community.general.npm:
+  ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
     path: /home/roboshop/{{COMPONENT}}
   become_user: roboshop
 
-- name: Configure systemd for {{COMPONENT}}
+- name: Setup app user and download the app code
   ansible.builtin.import_role:
     name: common
     tasks_from:  systemd
