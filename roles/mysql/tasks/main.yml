@@ -12,7 +12,7 @@
   ansible.builtin.systemd:
     name: mysqld
     state: started
-    enables: yes
+    enabled: yes
 
 - name: Check if new password working
   mysql_info:
