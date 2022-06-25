@@ -15,7 +15,8 @@
 
 - name: Install {{COMPONENT}} dependencies
   ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
-    path: /home/roboshop/{{COMPONENT}}
+    args:
+      chdir: /home/roboshop/{{COMPONENT}}
   become_user: roboshop
 
 - name: Setup app user and download the app code
