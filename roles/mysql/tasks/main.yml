@@ -22,7 +22,7 @@
     login_password: Roboshop@1
     filter: databases
   ignore_errors: yes
-  register: check_pass
+  register: check_passed
 
 - name: Password change block
   when: check_passed.failed
